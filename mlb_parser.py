@@ -23,7 +23,11 @@ def fetch_runs(game_id):
             for stats in team["statistics"][0]["stats"]:
                 if stats["name"]=="runs":
                     print(f"The Angels scored {stats['value']} runs at home")
-                    print("WEDIDITTT!!")
+                    if int(stats["value"])>=7:
+                        print("TRUE")
+                    else:
+                        print("FALSE")
+
 
 
 def fetch_mlb_date(date):
