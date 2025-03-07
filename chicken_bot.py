@@ -5,15 +5,19 @@ from dotenv import load_dotenv
 load_dotenv()
 TOKEN = os.getenv("TOKEN")
 CHANNEL_ID = int(os.getenv("CHANNEL_ID"))
+image_path = "assets/rendoners.png"
 
 url = f"https://discord.com/api/v9/channels/{CHANNEL_ID}/messages"
 
-payload = {
-    "content": "TEST"
-}
+with open(image_path, "rb") as file:
 
-headers = {
-    "Authorization": f"Bot {TOKEN}"
-}
+    payload = {
+        "file": file
+    }
 
-response = requests.post(url, json=payload, headers=headers)
+    headers = {
+        "Authorization": f"Bot {TOKEN}"
+    }
+
+    response = requests.post(url, files=payload, headers=headers)
+
